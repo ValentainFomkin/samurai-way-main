@@ -7,8 +7,15 @@ import {Footer} from "./components/footer/Footer";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {Profile} from "./components/profile/Profile";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {DialogsDataType, MessagesType, PostDataType} from "./index";
 
-function App() {
+export type AppPropsType = {
+    postsData: PostDataType[]
+    dialogsData: DialogsDataType[]
+    messageData: MessagesType[]
+}
+
+export const App = (props: AppPropsType) => {
     return (
         <BrowserRouter>
             <div className={s.appWrapper}>
@@ -23,12 +30,13 @@ function App() {
 
                     <div className={s.dialogs}>
                         <Routes>
-                            <Route path={'/dialogs'} element={<Dialogs/>}/>
+                            <Route path={'/dialogs'} element={<Dialogs dialogsData={props.dialogsData}
+                                                                       messageData={props.messageData}/>}/>
                         </Routes>
                     </div>
                     <div className={s.profile}>
                         <Routes>
-                            <Route path={'/profile'} element={<Profile/>}/>
+                            <Route path={'/profile'} element={<Profile postsData={props.postsData}/>}/>
                         </Routes>
                     </div>
 
@@ -43,4 +51,4 @@ function App() {
     );
 }
 
-export default App;
+

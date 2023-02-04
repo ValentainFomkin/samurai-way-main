@@ -2,8 +2,14 @@ import React from 'react';
 import s from "./Profile.module.css";
 import {MyPosts} from "./myPosts/MyPosts";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
+import {PostDataType} from "../../index";
 
-export const Profile = () => {
+export type ProfilePropsType = {
+    postsData: PostDataType[]
+
+}
+
+export const Profile = (props: ProfilePropsType) => {
     const srcPhoto = "https://www.shutterstock.com/image-photo/collage-portraits-one-young-beautiful-260nw-2025791279.jpg"
     return (
         <div>
@@ -16,7 +22,7 @@ export const Profile = () => {
                 <ProfileInfo/>
             </div>
             <div>
-                <MyPosts/>
+                <MyPosts postsData={props.postsData}/>
             </div>
         </div>
 

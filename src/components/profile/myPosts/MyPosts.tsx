@@ -1,25 +1,29 @@
 import React from 'react';
 import s from "./MyPosts.module.css";
 import {Post} from "./post/Post";
-import {v1} from "uuid";
+import {PostDataType} from "../../../index";
 
 export type PostType = {
     id: string
     title: string
 }
-export const MyPosts = () => {
+export type MyPostsPropsType = {
+    postsData: PostDataType[]
+}
 
-    let postsData = [
-        {id: v1(), postsTitle: 'Dima', postMessage: `i'm learning React!`, likesCount: 10},
-        {id: v1(), postsTitle: 'Valya', postMessage: `i'm learning Redux!`, likesCount: 10},
-        {id: v1(), postsTitle: 'Alina', postMessage: `i'm learning Html!`, likesCount: 10},
-        {id: v1(), postsTitle: 'Sasha', postMessage: `i'm learning JS!`, likesCount: 10},
-        {id: v1(), postsTitle: 'Andrey', postMessage: `i'm learning TypeScript!`, likesCount: 10},
-    ]
+export const MyPosts = (props: MyPostsPropsType) => {
 
-    let postElements = postsData.map(e => <Post postsTitle={e.postsTitle}
-                                                postMessage={e.postMessage}
-                                                likesCount={e.likesCount}/>)
+    // let postsData = [
+    //     {id: v1(), postsTitle: 'Dima', postMessage: `i'm learning React!`, likesCount: 10},
+    //     {id: v1(), postsTitle: 'Valya', postMessage: `i'm learning Redux!`, likesCount: 10},
+    //     {id: v1(), postsTitle: 'Alina', postMessage: `i'm learning Html!`, likesCount: 10},
+    //     {id: v1(), postsTitle: 'Sasha', postMessage: `i'm learning JS!`, likesCount: 10},
+    //     {id: v1(), postsTitle: 'Andrey', postMessage: `i'm learning TypeScript!`, likesCount: 10},
+    // ]
+
+    let postElements = props.postsData.map(e => <Post postsTitle={e.postsTitle}
+                                                      postMessage={e.postMessage}
+                                                      likesCount={e.likesCount}/>)
 
 
     return (
