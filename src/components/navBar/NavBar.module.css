@@ -1,0 +1,16 @@
+.item {
+    margin-bottom: 10px;
+
+}
+
+.item:last-child {
+    margin-bottom: 0px;
+    margin-top: 50px;
+}
+
+.item a {
+    color: #ff6363;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 600;
+}
