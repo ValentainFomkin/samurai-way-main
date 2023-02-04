@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./Post.module.css";
-import {Span} from "../../../button/Span";
+import {Span} from "../../../span/Span";
 
 export type PostPropsType = {
     postsTitle: string

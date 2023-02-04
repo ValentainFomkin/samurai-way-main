@@ -7,12 +7,21 @@ import {Footer} from "./components/footer/Footer";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {Profile} from "./components/profile/Profile";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {DialogsDataType, MessagesType, PostDataType} from "./index";
+import {DialogsDataType, MessagesType, NameFriendsType, PostDataType} from "./redux/state";
 
 export type AppPropsType = {
-    postsData: PostDataType[]
-    dialogsData: DialogsDataType[]
-    messageData: MessagesType[]
+    state: {
+        postsData: {
+            post: PostDataType[]
+        }
+        dialogsData: {
+            dialogs: DialogsDataType[]
+            messages: MessagesType[]
+        }
+        navigationData: {
+            nameFriend: NameFriendsType[]
+        }
+    }
 }
 
 export const App = (props: AppPropsType) => {
@@ -25,23 +34,18 @@ export const App = (props: AppPropsType) => {
 
                 <div className={s.body}>
                     <div className={s.navBar}>
-                        <Navbar/>
+                        <Navbar navigationData={props.state.navigationData}/>
                     </div>
 
-                    <div className={s.dialogs}>
-                        <Routes>
-                            <Route path={'/dialogs'} element={<Dialogs dialogsData={props.dialogsData}
-                                                                       messageData={props.messageData}/>}/>
-                        </Routes>
-                    </div>
-                    <div className={s.profile}>
-                        <Routes>
-                            <Route path={'/profile'} element={<Profile postsData={props.postsData}/>}/>
-                        </Routes>
-                    </div>
+
+                    <Routes>
+                        <Route path={'/dialogs'} element={<Dialogs dialogsData={props.state.dialogsData}/>}/>
+                        <Route path={'/profile'} element={<Profile postsData={props.state.postsData}/>}/>
+                    </Routes>
+
 
                 </div>
-                <div className={s.footer}>
+                <div>
                     <Footer/>
                 </div>
 

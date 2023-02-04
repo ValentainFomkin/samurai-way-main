@@ -10,7 +10,7 @@ export type MessagesItemPropsType = {
 export const Message = (props: MessagesItemPropsType) => {
     return (
         <div className={s.message}>
-            <span id={props.id}>{props.text}</span>
+            <div id={props.id}>{props.text}</div>
         </div>
     )
 }

@@ -3,42 +3,36 @@ import s from './Dialogs.module.css'
 import {Dialog} from "./dialog/Dialog";
 import {Message} from "./messages/Messages";
 import {v1} from "uuid";
-import {DialogsDataType, MessagesType} from "../../index";
+import {DialogsDataType, MessagesType} from "../../redux/state";
 
 export type DialogsPropsType = {
-    dialogsData: DialogsDataType[]
-    messageData: MessagesType[]
+    dialogsData: {
+        dialogs: DialogsDataType[]
+        messages: MessagesType[]
+    }
 }
 
 export const Dialogs = (props: DialogsPropsType) => {
-    // let dialogsData = [
-    //     {id: v1(), name: 'Dima'},
-    //     {id: v1(), name: 'Valya'},
-    //     {id: v1(), name: 'Alina'},
-    //     {id: v1(), name: 'Sasha'},
-    //
-    // ]
-    // let messageData = [
-    //     {id: v1(), message: 'Helloasdasdasdasdasdasdsasadsaddsadasdsaasdsadsadas'},
-    //     {id: v1(), message: 'Yoasasasasasasasas'},
-    //     {id: v1(), message: 'Byasdasdasdsadas'},
-    //     {id: v1(), message: 'IT-KAMASUTRAasdsadsadsaasdasdasdsadsadsadasdasdsa'},
-    // ]
 
-    let dialogElements = props.dialogsData.map(e => <Dialog id={v1()} name={e.name}/>)
-    let messageElements = props.messageData.map(e => <Message id={e.id} text={e.message}/>)
+    let dialogElements = props.dialogsData.dialogs.map(e => <Dialog id={v1()} name={e.name}/>)
+    let messageElements = props.dialogsData.messages.map(e => <Message id={e.id} text={e.message}/>)
 
     return (
-        <div>
-            <div className={s.dialogs}>
-                <div className={s.dialogsItem}>
-                    {dialogElements}
+
+        <div className={s.dialogs}>
+            <div className={s.dialogsItem}>
+                {dialogElements}
+            </div>
+            <div className={s.messagesItems}>
+                <div className={s.messageLeft}>
+                    {messageElements}
                 </div>
-                <div className={s.messagesItems}>
+                <div className={s.messageRight}>
                     {messageElements}
                 </div>
             </div>
         </div>
+
     );
 };
 
