@@ -18,7 +18,7 @@ export const Profile = () => {
                 </div>
                 <div className={s.infoOfMe}>
                     <div className={s.name}>
-                        <span>Amaliya</span>
+                        <span>Amalia</span>
                     </div>
                     <div className={s.description}>
                         <p>Date of Birth: </p>
