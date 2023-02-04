@@ -17,9 +17,9 @@ export const MyPosts = () => {
         {id: v1(), postsTitle: 'Andrey', postMessage: `i'm learning TypeScript!`, likesCount: 10},
     ]
 
-    let post = postsData.map(e => <Post postsTitle={e.postsTitle}
-                                        postMessage={e.postMessage}
-                                        likesCount={e.likesCount}/>)
+    let postElements = postsData.map(e => <Post postsTitle={e.postsTitle}
+                                                postMessage={e.postMessage}
+                                                likesCount={e.likesCount}/>)
 
 
     return (
@@ -36,18 +36,7 @@ export const MyPosts = () => {
                 </div>
             </div>
             <div>
-                {post}
-                {/*<Post*/}
-                {/*    postsTitle={'First post'}*/}
-                {/*    postMessage={`i'm learning React!`}*/}
-                {/*    likesCount={10}*/}
-                {/*/>*/}
-                {/*<Post*/}
-                {/*    postsTitle={'Second post'}*/}
-                {/*    postMessage={`i'm learning HTML!`}*/}
-                {/*    likesCount={20}*/}
-                {/*/>*/}
-
+                {postElements}
             </div>
         </div>
     );

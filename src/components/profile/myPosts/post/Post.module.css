@@ -56,6 +56,21 @@
 
 }
 
+.postItemLike {
+    display: flex;
+    justify-content: space-between;
+}
+
+.postItemLike span {
+    width: 50px;
+    height: 30px;
+    background-color: #d7fd61;
+    color: #fa89ff;
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
 .postItemLike button {
     width: 50px;
     height: 30px;
@@ -65,4 +80,14 @@
     font-size: 18px;
     border: 1px solid #fa89ff;
     border-radius: 10px;
+}
+
+.postItemLike button:hover {
+    background-color: #b9ff00;
+    color: #f600ff;
+}
+
+.postItemLike button:active {
+    background-color: #d7fd61;
+    color: #fa89ff;
 }
