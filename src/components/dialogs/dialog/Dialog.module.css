@@ -1,11 +1,21 @@
 
 .dialog {
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .dialog:last-child {
     margin-bottom: 50px;
 }
+
+.dialog img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
 
 .dialog a {
     color: #fa89ff;
