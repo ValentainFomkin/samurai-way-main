@@ -1,0 +1,39 @@
+.myPostsBlock {
+    
+}
+
+.myPosts {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.myPostsTextArea {
+    margin-bottom: 20px;
+}
+
+.myPostsTextArea textarea {
+    width: 500px;
+    height: 100px;
+    background-color: #d7fd61;
+    border: 1px solid #fa89ff;
+
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 5px 5px 5px 15px;
+}
+
+.myPostButtonSend {
+    margin-bottom: 30px;
+}
+
+.myPostButtonSend button {
+    width: 200px;
+    height: 50px;
+    background-color: #d7fd61;
+    color: #fa89ff;
+    font-weight: 700;
+    font-size: 18px;
+    border: 1px solid #fa89ff;
+    border-radius: 15px;
+}
