@@ -6,7 +6,7 @@ import {Navbar} from "./components/navBar/Navbar";
 import {Footer} from "./components/footer/Footer";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {Profile} from "./components/profile/Profile";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 function App() {
     return (
@@ -20,12 +20,18 @@ function App() {
                     <div className={s.navBar}>
                         <Navbar/>
                     </div>
+
                     <div className={s.dialogs}>
-                        <Dialogs/>
+                        <Routes>
+                            <Route path={'/dialogs'} element={<Dialogs/>}/>
+                        </Routes>
                     </div>
                     <div className={s.profile}>
-                        <Profile/>
+                        <Routes>
+                            <Route path={'/profile'} element={<Profile/>}/>
+                        </Routes>
                     </div>
+
                 </div>
                 <div className={s.footer}>
                     <Footer/>
