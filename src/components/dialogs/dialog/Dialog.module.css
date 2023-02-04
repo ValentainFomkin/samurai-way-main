@@ -1,0 +1,24 @@
+
+.dialog {
+    margin-bottom: 20px;
+}
+
+.dialog:last-child {
+    margin-bottom: 50px;
+}
+
+.dialog a {
+    color: #fa89ff;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.dialog a:hover {
+    color: #f300ff;
+}
+
+.dialog a:active {
+    color: #fa89ff;
+}
+
+
