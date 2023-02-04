@@ -11,37 +11,3 @@
     opacity: 70%;
     border-radius: 20px;
 }
-
-.infoOfProfile {
-    display: flex;
-    background-color: #ffe5e7;
-    padding: 20px;
-    border-radius: 20px;
-    margin-bottom: 50px;
-}
-
-.avatar {
-    margin-right: 30px;
-}
-
-.avatar img {
-    width: 240px;
-    height: 240px;
-    border-radius: 20%;
-    border: none;
-}
-
-.infoOfMe {
-    display: flex;
-    flex-direction: column;
-}
-
-.name {
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.description {
-    font-size: 20px;
-}
