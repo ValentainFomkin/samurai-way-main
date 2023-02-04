@@ -1,0 +1,18 @@
+.messagesItems {
+
+}
+
+.message {
+    margin-bottom: 20px;
+}
+
+.message span {
+    font-size: 20px;
+}
+
+.message:last-child {
+    margin-bottom: 0px;
+
+}
+
+
