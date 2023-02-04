@@ -1,34 +1,39 @@
 import React from 'react';
 import './App.module.css';
 import s from './App.module.css'
+import {Header} from "./components/header/Header";
+import {Navbar} from "./components/navBar/Navbar";
+import {Footer} from "./components/footer/Footer";
+import {Dialogs} from "./components/dialogs/Dialogs";
+import {Profile} from "./components/profile/Profile";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
     return (
-        <div className={s.appWrapper}>
-            <div className={s.header}>
-                <div className={s.logoHeader}>
-                    <img
-                        src="https://cdn.dribbble.com/users/153055/screenshots/14524552/media/1c289b4d79870a1bbd71ac00b429e671.jpg?compress=1&resize=400x300&vertical=top"
-                        alt="balerina-logo"/>
+        <BrowserRouter>
+            <div className={s.appWrapper}>
+                <div className={s.header}>
+                    <Header/>
                 </div>
-            </div>
-            <div className={s.body}>
-                <div className={s.navBar}>
-                    <div>Profile</div>
-                    <div>Messages</div>
-                    <div>sadasd</div>
-                    <div>asdsad</div>
+
+                <div className={s.body}>
+                    <div className={s.navBar}>
+                        <Navbar/>
+                    </div>
+                    <div className={s.dialogs}>
+                        <Dialogs/>
+                    </div>
+                    <div className={s.profile}>
+                        <Profile/>
+                    </div>
                 </div>
-                <div className={s.content}>
-                    <img
-                        src="https://www.shutterstock.com/image-photo/collage-portraits-one-young-beautiful-260nw-2025791279.jpg"
-                    />
+                <div className={s.footer}>
+                    <Footer/>
                 </div>
+
             </div>
-            <div className={s.footer}>
-                <div>Main Content</div>
-            </div>
-        </div>
+        </BrowserRouter>
+
     );
 }
 
