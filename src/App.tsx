@@ -6,51 +6,45 @@ import {Navbar} from "./components/navBar/Navbar";
 import {Footer} from "./components/footer/Footer";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {Profile} from "./components/profile/Profile";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {DialogsDataType, MessagesType, NameFriendsType, PostDataType} from "./redux/state";
+import {Route, Routes} from "react-router-dom";
+import {StateType} from "./redux/state";
 
 export type AppPropsType = {
-    state: {
-        postsData: {
-            post: PostDataType[]
-        }
-        dialogsData: {
-            dialogs: DialogsDataType[]
-            messages: MessagesType[]
-        }
-        navigationData: {
-            nameFriend: NameFriendsType[]
-        }
-    }
+    state: StateType
+    addPost: (postMessage: string) => void
 }
 
-export const App = (props: AppPropsType) => {
+export const App: React.FC<AppPropsType> = (props) => {
     return (
-        <BrowserRouter>
-            <div className={s.appWrapper}>
-                <div className={s.header}>
-                    <Header/>
+
+        <div className={s.appWrapper}>
+            <div className={s.header}>
+                <Header/>
+            </div>
+
+            <div className={s.body}>
+                <div className={s.navBar}>
+                    <Navbar
+                        // navigationData={props.state.navigationData}
+                    />
                 </div>
 
-                <div className={s.body}>
-                    <div className={s.navBar}>
-                        <Navbar navigationData={props.state.navigationData}/>
-                    </div>
 
+                <Routes>
+                    <Route path={'/dialogs'} element={<Dialogs dialogsData={props.state.dialogsData}/>}/>
+                    <Route path={'/profile'} element={<Profile postsData={props.state.postsData}
+                                                               addPost={props.addPost}
+                    />}/>
+                </Routes>
 
-                    <Routes>
-                        <Route path={'/dialogs'} element={<Dialogs dialogsData={props.state.dialogsData}/>}/>
-                        <Route path={'/profile'} element={<Profile postsData={props.state.postsData}/>}/>
-                    </Routes>
-
-
-                </div>
-                <div>
-                    <Footer/>
-                </div>
 
             </div>
-        </BrowserRouter>
+            <div>
+                <Footer/>
+            </div>
+
+        </div>
+
 
     );
 }
