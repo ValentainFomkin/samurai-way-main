@@ -1,23 +1,33 @@
 import React from 'react';
 import s from "./MyPosts.module.css";
 import {Post} from "./post/Post";
-import {PostDataType} from "../../../redux/state";
+import {PostType} from "../../../redux/state";
 
-export type PostType = {
-    id: string
-    title: string
-}
+
 export type MyPostsPropsType = {
     postsData: {
-        post: PostDataType[]
+        post: PostType[]
     }
+    addPost: (postMessage: string) => void
+
+
 }
 
-export const MyPosts = (props: MyPostsPropsType) => {
+export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
-    let postElements = props.postsData.post.map(e => <Post postsTitle={e.postsTitle}
-                                                           postMessage={e.postMessage}
-                                                           likesCount={e.likesCount}/>)
+
+    let postElements = props.postsData.post.map((e, index) => <Post key={e.id} postMessage={e.postMessage}
+                                                                    likesCount={e.likesCount}/>)
+
+    let newPostElement = React.createRef<HTMLTextAreaElement>()
+
+    const addPostHandler = () => {
+        if (newPostElement.current) {
+            props.addPost(newPostElement.current.value)
+            newPostElement.current.value = ''
+        }
+
+    }
 
     return (
         <div>
@@ -26,10 +36,12 @@ export const MyPosts = (props: MyPostsPropsType) => {
                     <span>My posts</span>
                 </div>
                 <div className={s.myPostsTextArea}>
-                    <textarea placeholder='text'></textarea>
+                    <textarea
+                        ref={newPostElement}
+                        placeholder='text'></textarea>
                 </div>
                 <div className={s.myPostButtonSend}>
-                    <button>Send</button>
+                    <button onClick={addPostHandler}>Send</button>
                 </div>
             </div>
             <div>
