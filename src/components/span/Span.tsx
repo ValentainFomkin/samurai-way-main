@@ -4,7 +4,7 @@ export type SpanPropsType = {
     name: string
 }
 
-export const Span = (props: SpanPropsType) => {
+export const Span: React.FC<SpanPropsType> = (props) => {
     return (
         <span>{props.name}</span>
     );
