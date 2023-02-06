@@ -8,7 +8,7 @@ export type DialogItemPropsType = {
 
 }
 
-export const Dialog = (props: DialogItemPropsType) => {
+export const Dialog: React.FC<DialogItemPropsType> = (props) => {
 
     const srcAvatar = "https://img.freepik.com/premium-vector/female-user-profile-avatar-is-woman-character-screen-saver-with-emotions_505620-617.jpg?w=2000"
 
