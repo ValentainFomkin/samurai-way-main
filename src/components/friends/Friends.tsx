@@ -8,7 +8,7 @@ export type FriendsItemsPropsType = {
     lastNameFriend: string
 }
 
-export const FriendsItems = (props: FriendsItemsPropsType) => {
+export const FriendsItems: React.FC<FriendsItemsPropsType> = (props) => {
 
 
     return (
