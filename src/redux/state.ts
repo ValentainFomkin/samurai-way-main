@@ -1,5 +1,6 @@
 import {v1} from "uuid";
-import {renderEntireTree} from "../render";
+import {renderEntireTree} from "../index";
+
 
 export type StateType = {
     postsData: PostDataType
@@ -72,8 +73,7 @@ export const state: StateType = {
             {id: v1(), name: 'Valya'},
             {id: v1(), name: 'Alina'},
         ]
-    }
-
+    },
 }
 
 
@@ -87,6 +87,7 @@ export let addPost = () => {
     state.postsData.newPostText = ''
     renderEntireTree(state)
 }
+
 export const updateNewPostText = (newText: string) => {
     state.postsData.newPostText = newText
     renderEntireTree(state)
