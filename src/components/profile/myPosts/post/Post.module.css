@@ -1,23 +1,5 @@
-.newPost {
-    margin-bottom: 15px;
-
-}
-
-.newPost span {
-    font-size: 30px;
-    font-weight: 600;
-}
-
-.buttonAddNewPost {
-
-}
-
-.buttonAddNewPost button {
-
-}
-
 .posts {
-    display: inline-block;
+    display: flex;
 
 }
 
@@ -27,6 +9,9 @@
     padding: 10px;
     background-color: #d7fd61;
     border-radius: 20px;
+    margin-bottom: 10px;
+    flex: 0 1 450px;
+
 }
 
 .postAvatar {
@@ -42,18 +27,21 @@
 
 
 .postItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
 }
 
 .postItemText {
     margin-bottom: 20px;
     max-width: 700px;
+
 }
 
 .postItemText span {
     font-size: 26px;
     color: #fa89ff;
-
 }
 
 .postItemLike {
