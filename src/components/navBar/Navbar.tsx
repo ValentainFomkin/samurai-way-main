@@ -6,16 +6,15 @@ import {v1} from "uuid";
 import {NewsItems} from "../news/News";
 import {SettingsItems} from "../settings/Settings";
 import {FriendsItems} from "../friends/Friends";
-import {NameFriendsType} from "../../redux/state";
 
-export type NavbarPropsType = {
-    navigationData: {
-        nameFriend: NameFriendsType[]
-    }
+// export type NavbarPropsType = {
+//     navigationData: {
+//         nameFriend: NameFriendType[]
+//     }
+//
+// }
 
-}
-
-export const Navbar = (props: NavbarPropsType) => {
+export const Navbar = () => {
     return (
         <div>
             <div className={s.item}>
