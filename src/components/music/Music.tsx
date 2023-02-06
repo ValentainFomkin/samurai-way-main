@@ -6,7 +6,7 @@ export type MusicItemsPropsType = {
 
 }
 
-export const MusicItems = (props: MusicItemsPropsType) => {
+export const MusicItems: React.FC<MusicItemsPropsType> = (props) => {
 
 
     return (
