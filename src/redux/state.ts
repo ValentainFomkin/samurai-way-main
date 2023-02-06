@@ -8,7 +8,7 @@ export type StateType = {
 }
 export type PostDataType = {
     post: PostType[]
-
+    newPostText: string
 }
 export type PostType = {
     id: string
@@ -49,6 +49,7 @@ export const state: StateType = {
             {id: v1(), postMessage: `i'm learning JS!`, likesCount: 10},
             {id: v1(), postMessage: `i'm learning TypeScript!`, likesCount: 10},
         ],
+        newPostText: '',
     },
     dialogsData: {
         dialogs: [
@@ -76,20 +77,18 @@ export const state: StateType = {
 }
 
 
-export let addPost = (postMessage: string) => {
+export let addPost = () => {
     let newPost: PostType = {
         id: v1(),
-        postMessage: postMessage,
+        postMessage: state.postsData.newPostText,
         likesCount: 0
     }
     state.postsData.post.unshift(newPost)
+    state.postsData.newPostText = ''
     renderEntireTree(state)
-
-    // return {
-    //     ...state,
-    //     postsData: {...state.postsData},
-    //     post: [newPost, ...state.postsData.post]
-    // }
-
+}
+export const updateNewPostText = (newText: string) => {
+    state.postsData.newPostText = newText
+    renderEntireTree(state)
 
 }
