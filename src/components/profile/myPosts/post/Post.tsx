@@ -3,21 +3,16 @@ import s from "./Post.module.css";
 import {Span} from "../../../span/Span";
 
 export type PostPropsType = {
-    postsTitle: string
     postMessage: string
     likesCount: number
 }
 
 
-export const Post = (props: PostPropsType) => {
+export const Post: React.FC<PostPropsType> = (props) => {
     const srcAvatar = "https://img.freepik.com/premium-vector/female-user-profile-avatar-is-woman-character-screen-saver-with-emotions_505620-617.jpg?w=2000"
 
     return (
         <div>
-            <div className={s.newPost}>
-                <Span name={props.postsTitle}/>
-            </div>
-
             <div className={s.posts}>
                 <div className={s.post}>
                     <div className={s.postAvatar}>
