@@ -2,16 +2,18 @@ import React from 'react';
 import s from "./Profile.module.css";
 import {MyPosts} from "./myPosts/MyPosts";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
-import {PostDataType} from "../../redux/state";
+import {PostType} from "../../redux/state";
 
 export type ProfilePropsType = {
     postsData: {
-        post: PostDataType[]
+        post: PostType[]
     }
+    addPost: (postMessage: string) => void
+
 
 }
 
-export const Profile = (props: ProfilePropsType) => {
+export const Profile: React.FC<ProfilePropsType> = (props) => {
     const srcPhoto = "https://www.shutterstock.com/image-photo/collage-portraits-one-young-beautiful-260nw-2025791279.jpg"
     return (
         <div className={s.profile}>
@@ -24,7 +26,9 @@ export const Profile = (props: ProfilePropsType) => {
                 <ProfileInfo/>
             </div>
             <div>
-                <MyPosts postsData={props.postsData}/>
+                <MyPosts postsData={props.postsData}
+                         addPost={props.addPost}
+                />
             </div>
         </div>
 
