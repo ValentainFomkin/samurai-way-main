@@ -6,7 +6,7 @@ export type SettingsItemsPropsType = {
 
 }
 
-export const SettingsItems = (props: SettingsItemsPropsType) => {
+export const SettingsItems: React.FC<SettingsItemsPropsType> = (props) => {
 
 
     return (
