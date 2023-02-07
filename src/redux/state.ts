@@ -3,10 +3,19 @@ import {renderEntireTree} from "../index";
 
 export type StoreRootType = {
     _state: StateType
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
     getState: () => StateType
+    dispatch: (action: AllActionType) => void
 
+}
+export type AllActionType = AddPostActionType | UpdateNewPostTextActionType
+
+
+type AddPostActionType = {
+    type: 'ADD-POST'
+}
+type UpdateNewPostTextActionType = {
+    type: 'UPDATE-NEW-POST-TEXT'
+    newText: string
 }
 
 export type StateType = {
@@ -84,21 +93,21 @@ export let store: StoreRootType = {
     getState() {
         return this._state
     },
-    addPost() {
-        let newPost: PostType = {
-            id: v1(),
-            postMessage: this._state.postsData.newPostText,
-            likesCount: 0
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost: PostType = {
+                id: v1(),
+                postMessage: this._state.postsData.newPostText,
+                likesCount: 0
+            }
+            this._state.postsData.post.unshift(newPost)
+            this._state.postsData.newPostText = ''
+            renderEntireTree(store)
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.postsData.newPostText = action.newText
+            renderEntireTree(store)
         }
-        this._state.postsData.post.unshift(newPost)
-        this._state.postsData.newPostText = ''
-        renderEntireTree(store)
     },
-    updateNewPostText(newText) {
-        this._state.postsData.newPostText = newText
-        renderEntireTree(store)
-
-    }
 
 }
 // @ts-ignore
