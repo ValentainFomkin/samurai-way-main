@@ -1,27 +1,18 @@
 import {v1} from "uuid";
+import {ActionTypeProfileReducer, ProfileReducer} from "./profile-reducer";
+import {ActionTypeDialogsReducer, DialogsReducer} from "./dialogs-reducer";
+import {SiteBarReducer} from "./siteBar-reducer";
 import {renderEntireTree} from "../index";
-
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_ADD_MESSAGE = 'UPDATE-ADD-MESSAGE'
 
 export type StoreRootType = {
     _state: StateType
     getState: () => StateType
     dispatch: (action: AllActionType) => void
-
 }
-export type AllActionType =
-    AddPostActionType
-    | UpdateNewPostTextActionType
-    | AddNewMessageAC
-    | UpdateNewMessagesText
 
-export type AddPostActionType = ReturnType<typeof addPostAC>
-export type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAC>
-type AddNewMessageAC = ReturnType<typeof addNewMessageAC>
-type UpdateNewMessagesText = ReturnType<typeof updateNewMessagesText>
+export type AllActionType =
+    ActionTypeProfileReducer
+    | ActionTypeDialogsReducer
 
 
 export type StateType = {
@@ -104,60 +95,13 @@ export let store: StoreRootType = {
         return this._state
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost: PostType = {
-                id: v1(),
-                postMessage: this._state.postsData.newPostText,
-                likesCount: 0
-            }
-            this._state.postsData.post.unshift(newPost)
-            this._state.postsData.newPostText = ''
-            renderEntireTree(store)
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.postsData.newPostText = action.newText
-            renderEntireTree(store)
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage: MessagesType = {
-                id: v1(),
-                message: this._state.dialogsData.newMessagesText
-            }
-            this._state.dialogsData.messages.unshift(newMessage)
-            this._state.dialogsData.newMessagesText = ''
-            renderEntireTree(store)
+        this._state.postsData = ProfileReducer(this._state.postsData, action)
+        this._state.dialogsData = DialogsReducer(this._state.dialogsData, action)
+        this._state.navigationData = SiteBarReducer(this._state.navigationData, action)
 
-        } else if (action.type === UPDATE_ADD_MESSAGE) {
-            this._state.dialogsData.newMessagesText = action.newText
-            renderEntireTree(store)
-
-        }
+        renderEntireTree(store)
     },
 
-}
-
-export const updateNewMessagesText = (text: string) => {
-    return {
-        type: UPDATE_ADD_MESSAGE,
-        newText: text
-    } as const
-}
-
-export const addNewMessageAC = () => {
-    return {
-        type: ADD_MESSAGE
-    } as const
-}
-
-export const addPostAC = () => {
-    return {
-        type: ADD_POST
-    } as const
-}
-
-export const updateNewPostTextAC = (text: string) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    } as const
 }
 
 // @ts-ignore
