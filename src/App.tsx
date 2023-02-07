@@ -7,12 +7,11 @@ import {Footer} from "./components/footer/Footer";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {Profile} from "./components/profile/Profile";
 import {Route, Routes} from "react-router-dom";
-import {StateType} from "./redux/state";
+import {AllActionType, StateType} from "./redux/state";
 
 export type AppPropsType = {
     state: StateType
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
+    dispatch: (action: AllActionType) => void
 }
 
 export const App: React.FC<AppPropsType> = (props) => {
@@ -34,8 +33,8 @@ export const App: React.FC<AppPropsType> = (props) => {
                 <Routes>
                     <Route path={'/dialogs'} element={<Dialogs dialogsData={props.state.dialogsData}/>}/>
                     <Route path={'/profile'} element={<Profile postsData={props.state.postsData}
-                                                               addPost={props.addPost}
-                                                               updateNewPostText={props.updateNewPostText}
+                                                               dispatch={props.dispatch}
+
                     />}/>
                 </Routes>
 
