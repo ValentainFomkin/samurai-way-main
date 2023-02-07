@@ -6,15 +6,15 @@ import {v1} from "uuid";
 import {NewsItems} from "../news/News";
 import {SettingsItems} from "../settings/Settings";
 import {FriendsItems} from "../friends/Friends";
+import {useDispatch, useSelector} from "react-redux";
+import {ReducersRootType} from "../../redux/redux-store";
+import {NavigationDataType} from "../../redux/siteBar-reducer";
 
-// export type NavbarPropsType = {
-//     navigationData: {
-//         nameFriend: NameFriendType[]
-//     }
-//
-// }
 
 export const Navbar = () => {
+    const siteBarData = useSelector<ReducersRootType, NavigationDataType>(state => state.siteBarReducer)
+    let dispatch = useDispatch()
+
     return (
         <div>
             <div className={s.item}>
