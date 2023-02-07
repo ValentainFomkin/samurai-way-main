@@ -6,31 +6,6 @@ import {Dispatch} from "redux";
 import {addPostAC, PostType, updateNewPostTextAC} from "../../../redux/profile-reducer";
 
 
-export type MyPostsPropsType = {}
-
-// export const MyPostsContainer: React.FC<MyPostsPropsType> = (props) => {
-//     let dispatch = useDispatch()
-//     const postData = useSelector<ReducersRootType, PostDataType>(state => state.profileReducer)
-//
-//     const addPostHandler = () => {
-//         dispatch(addPostAC())
-//     }
-//
-//     const onPostChange = (text: string) => {
-//         dispatch(updateNewPostTextAC(text))
-//     }
-//
-//     return (
-//         <div>
-//             <MyPosts newPostText={postData.newPostText}
-//                      post={postData.post}
-//                      addPost={addPostHandler}
-//                      updateNewPostText={onPostChange}/>
-//         </div>
-//     );
-// };
-
-
 export type MapStatePropsType = {
     post: PostType[]
     newPostText: string
@@ -39,6 +14,7 @@ export type MapDispatchPropsType = {
     updateNewPostText: (text: string) => void
     addPost: () => void
 }
+
 
 let mapStateToProps = (state: ReducersRootType): MapStatePropsType => {
     return {
