@@ -31,7 +31,7 @@ let initialState: PostDataType = {
     newPostText: ''
 }
 
-export const ProfileReducer = (state = initialState, action: ProfileReducerActionType) => {
+export const ProfileReducer = (state = initialState, action: ProfileReducerActionType): PostDataType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost: PostType = {
