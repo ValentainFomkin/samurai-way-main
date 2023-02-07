@@ -10,8 +10,7 @@ export let renderEntireTree = (props: StoreRootType) => {
         <BrowserRouter>
             <App
                 state={props.getState()}
-                addPost={props.addPost.bind(store)}
-                updateNewPostText={props.updateNewPostText.bind(store)}
+                dispatch={props.dispatch.bind(store)}
             />,
         </BrowserRouter>, document.getElementById('root')
     )
