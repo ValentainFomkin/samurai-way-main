@@ -2,7 +2,7 @@ import React from 'react';
 import s from "./Profile.module.css";
 import {MyPosts} from "./myPosts/MyPosts";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
-import {AllActionType, PostDataType} from "../../redux/state";
+import {AllActionType, PostDataType} from "../../redux/store";
 
 export type ProfilePropsType = {
     postsData: PostDataType
