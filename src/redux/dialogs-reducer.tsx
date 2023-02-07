@@ -1,16 +1,29 @@
 import {v1} from "uuid";
-import {AllActionType, DialogsDataType, MessagesType} from "./store";
+
 
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_ADD_MESSAGE = 'UPDATE-ADD-MESSAGE'
 
-export type ActionTypeDialogsReducer =
+export type DialogsReducerActionType =
     AddNewMessageACType
     | updateNewMessagesTextACType
 
 type AddNewMessageACType = ReturnType<typeof addNewMessageAC>
 type updateNewMessagesTextACType = ReturnType<typeof updateNewMessagesTextAC>
 
+export type DialogsDataType = {
+    dialogs: DialogsType[]
+    messages: MessagesType[]
+    newMessagesText: string
+}
+export type MessagesType = {
+    id: string
+    message: string
+}
+export type DialogsType = {
+    id: string
+    name: string
+}
 
 let initialState: DialogsDataType = {
     dialogs: [
@@ -27,20 +40,24 @@ let initialState: DialogsDataType = {
     newMessagesText: ''
 }
 
-export const DialogsReducer = (state = initialState, action: AllActionType) => {
+export const DialogsReducer = (state = initialState, action: DialogsReducerActionType) => {
     switch (action.type) {
         case ADD_MESSAGE: {
             let newMessage: MessagesType = {
                 id: v1(),
                 message: state.newMessagesText
             }
-            state.messages.unshift(newMessage)
-            state.newMessagesText = ''
-            return state
+            return {
+                ...state,
+                messages: [newMessage, ...state.messages],
+                newMessagesText: ''
+            }
         }
         case UPDATE_ADD_MESSAGE: {
-            state.newMessagesText = action.newText
-            return state
+            return {
+                ...state,
+                newMessagesText: action.newText
+            }
         }
         default:
             return state
