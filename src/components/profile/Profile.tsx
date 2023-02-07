@@ -1,12 +1,11 @@
 import React from 'react';
 import s from "./Profile.module.css";
-import {MyPosts} from "./myPosts/MyPosts";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
-import {AllActionType, PostDataType} from "../../redux/store";
+import {MyPostsContainer} from "./myPosts/MyPostsContainer";
 
 export type ProfilePropsType = {
-    postsData: PostDataType
-    dispatch: (action: AllActionType) => void
+    // postsData: PostDataType
+    // dispatch: (action: AllActionType) => void
 
 
 }
@@ -24,11 +23,7 @@ export const Profile: React.FC<ProfilePropsType> = (props) => {
                 <ProfileInfo/>
             </div>
             <div>
-                <MyPosts post={props.postsData.post}
-                         newPostText={props.postsData.newPostText}
-                         dispatch={props.dispatch}
-
-                />
+                <MyPostsContainer/>
             </div>
         </div>
 
