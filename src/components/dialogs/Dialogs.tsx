@@ -1,4 +1,4 @@
-import React, {ChangeEvent, RefObject} from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './Dialogs.module.css'
 import {Dialog} from "./dialog/Dialog";
 import {Message} from "./message/Message";
@@ -16,8 +16,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     let dialogElements = props.dialogsData.dialogs.map((e, index) => <Dialog key={e.id} id={v1()} name={e.name}/>)
     let messageElements = props.dialogsData.messages.map((e, index) => <Message key={e.id} id={e.id} text={e.message}/>)
 
-    let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef()
-
     const addNewMessageHandler = () => {
         props.dispatch(addNewMessageAC())
     }
@@ -28,7 +26,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     }
 
     return (
-
         <div className={s.dialogs}>
 
             <div className={s.dialogsItem}>
@@ -38,7 +35,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 <div className={s.dialogsTextArea}>
                     <textarea value={props.dialogsData.newMessagesText}
                               onChange={onChangeTextAreaHandler}
-                              ref={newPostElement}
                               placeholder='text'/>
                 </div>
                 <div className={s.dialogsButtonSend}>
@@ -55,7 +51,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
             </div>
 
         </div>
-
     );
 };
 

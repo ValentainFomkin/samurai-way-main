@@ -14,12 +14,10 @@ export type MyPostsPropsType = {
 
 export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
-
     let postElements = props.post.map((e, index) => <Post key={e.id} postMessage={e.postMessage}
                                                           likesCount={e.likesCount}/>)
 
-    let newPostElement = React.createRef<HTMLTextAreaElement>()
-
+    
     const addPostHandler = () => {
         props.dispatch(addPostAC())
     }
@@ -39,7 +37,6 @@ export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
                     <textarea
                         value={props.newPostText}
                         onChange={onChange}
-                        ref={newPostElement}
                         placeholder='text'></textarea>
                 </div>
                 <div className={s.myPostButtonSend}>
