@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {AllActionType, DialogsDataType, MessagesType} from "./state";
+import {AllActionType, DialogsDataType, MessagesType} from "./store";
 
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_ADD_MESSAGE = 'UPDATE-ADD-MESSAGE'
@@ -12,7 +12,22 @@ type AddNewMessageACType = ReturnType<typeof addNewMessageAC>
 type updateNewMessagesTextACType = ReturnType<typeof updateNewMessagesTextAC>
 
 
-export const DialogsReducer = (state: DialogsDataType, action: AllActionType) => {
+let initialState: DialogsDataType = {
+    dialogs: [
+        {id: v1(), name: 'Dima'},
+        {id: v1(), name: 'Valya'},
+        {id: v1(), name: 'Alina'},
+        {id: v1(), name: 'Sasha'},
+
+    ],
+    messages: [
+        {id: v1(), message: 'Hello'},
+
+    ],
+    newMessagesText: ''
+}
+
+export const DialogsReducer = (state = initialState, action: AllActionType) => {
     switch (action.type) {
         case ADD_MESSAGE: {
             let newMessage: MessagesType = {
