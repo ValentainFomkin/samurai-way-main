@@ -31,7 +31,10 @@ export const App: React.FC<AppPropsType> = (props) => {
 
 
                 <Routes>
-                    <Route path={'/dialogs'} element={<Dialogs dialogsData={props.state.dialogsData}/>}/>
+                    <Route path={'/dialogs'} element={<Dialogs dialogsData={props.state.dialogsData}
+                                                               dispatch={props.dispatch}
+
+                    />}/>
                     <Route path={'/profile'} element={<Profile postsData={props.state.postsData}
                                                                dispatch={props.dispatch}
 
