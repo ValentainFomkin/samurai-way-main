@@ -3,7 +3,7 @@ import s from './Dialogs.module.css'
 import {Dialog} from "./dialog/Dialog";
 import {Message} from "./message/Message";
 import {v1} from "uuid";
-import {AllActionType, DialogsDataType,} from "../../redux/state";
+import {AllActionType, DialogsDataType,} from "../../redux/store";
 import {addNewMessageAC, updateNewMessagesTextAC} from "../../redux/dialogs-reducer";
 
 export type DialogsPropsType = {
