@@ -1,8 +1,24 @@
 import {v1} from "uuid";
-import {AllActionType, PostDataType, PostType} from "./store";
+
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
+export type ProfileReducerActionType = AddPostActionType
+    | UpdateNewPostTextActionType
+
+export type AddPostActionType = ReturnType<typeof addPostAC>
+export type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAC>
+
+export type PostDataType = {
+    post: PostType[]
+    newPostText: string
+}
+export type PostType = {
+    id: string
+    postMessage: string
+    likesCount: number
+}
 
 let initialState: PostDataType = {
     post: [
@@ -15,7 +31,7 @@ let initialState: PostDataType = {
     newPostText: ''
 }
 
-export const ProfileReducer = (state = initialState, action: AllActionType) => {
+export const ProfileReducer = (state = initialState, action: ProfileReducerActionType) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost: PostType = {
@@ -23,13 +39,17 @@ export const ProfileReducer = (state = initialState, action: AllActionType) => {
                 postMessage: state.newPostText,
                 likesCount: 0
             }
-            state.post.unshift(newPost)
-            state.newPostText = ''
-            return state
+            return {
+                ...state,
+                post: [newPost, ...state.post],
+                newPostText: ''
+            }
         }
         case UPDATE_NEW_POST_TEXT: {
-            state.newPostText = action.newText
-            return state
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         }
         default:
             return state
@@ -37,11 +57,6 @@ export const ProfileReducer = (state = initialState, action: AllActionType) => {
 
 }
 
-export type ActionTypeProfileReducer = AddPostActionType
-    | UpdateNewPostTextActionType
-
-export type AddPostActionType = ReturnType<typeof addPostAC>
-export type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAC>
 
 export const addPostAC = () => {
     return {
