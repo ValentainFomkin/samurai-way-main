@@ -3,7 +3,8 @@ import s from './Dialogs.module.css'
 import {Dialog} from "./dialog/Dialog";
 import {Message} from "./message/Message";
 import {v1} from "uuid";
-import {addNewMessageAC, AllActionType, DialogsDataType, updateNewMessagesText} from "../../redux/state";
+import {AllActionType, DialogsDataType,} from "../../redux/state";
+import {addNewMessageAC, updateNewMessagesTextAC} from "../../redux/dialogs-reducer";
 
 export type DialogsPropsType = {
     dialogsData: DialogsDataType
@@ -22,7 +23,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     const onChangeTextAreaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
-        props.dispatch(updateNewMessagesText(text))
+        props.dispatch(updateNewMessagesTextAC(text))
     }
 
     return (
