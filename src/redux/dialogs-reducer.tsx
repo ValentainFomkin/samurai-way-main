@@ -40,7 +40,7 @@ let initialState: DialogsDataType = {
     newMessagesText: ''
 }
 
-export const DialogsReducer = (state = initialState, action: DialogsReducerActionType) => {
+export const DialogsReducer = (state = initialState, action: DialogsReducerActionType): DialogsDataType => {
     switch (action.type) {
         case ADD_MESSAGE: {
             let newMessage: MessagesType = {
