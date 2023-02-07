@@ -1,11 +1,21 @@
 import {v1} from "uuid";
-import {AllActionType, PostDataType, PostType} from "./state";
+import {AllActionType, PostDataType, PostType} from "./store";
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
+let initialState: PostDataType = {
+    post: [
+        {id: v1(), postMessage: `i'm learning React!`, likesCount: 10},
+        {id: v1(), postMessage: `i'm learning Redux!`, likesCount: 10},
+        {id: v1(), postMessage: `i'm learning Html!`, likesCount: 10},
+        {id: v1(), postMessage: `i'm learning JS!`, likesCount: 10},
+        {id: v1(), postMessage: `i'm learning TypeScript!`, likesCount: 10},
+    ],
+    newPostText: ''
+}
 
-export const ProfileReducer = (state: PostDataType, action: AllActionType) => {
+export const ProfileReducer = (state = initialState, action: AllActionType) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost: PostType = {
