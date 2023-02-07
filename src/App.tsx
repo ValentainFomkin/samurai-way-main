@@ -7,7 +7,7 @@ import {Footer} from "./components/footer/Footer";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {Profile} from "./components/profile/Profile";
 import {Route, Routes} from "react-router-dom";
-import {AllActionType, StateType} from "./redux/state";
+import {AllActionType, StateType} from "./redux/store";
 
 export type AppPropsType = {
     state: StateType
