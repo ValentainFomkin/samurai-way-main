@@ -76,9 +76,7 @@ export let store: StoreRootType = {
             ],
             messages: [
                 {id: v1(), message: 'Hello'},
-                {id: v1(), message: 'Yo'},
-                {id: v1(), message: 'By'},
-                {id: v1(), message: 'IT-KAMASUTRA'},
+
             ],
             newMessagesText: '',
 
