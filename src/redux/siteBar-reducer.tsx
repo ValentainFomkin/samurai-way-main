@@ -1,5 +1,12 @@
-import {AllActionType, NavigationDataType} from "./store";
 import {v1} from "uuid";
+
+export type NavigationDataType = {
+    nameFriend: NameFriendType[]
+}
+export type NameFriendType = {
+    id: string
+    name: string
+}
 
 let initialState: NavigationDataType = {
     nameFriend: [
@@ -10,6 +17,6 @@ let initialState: NavigationDataType = {
 }
 
 
-export const SiteBarReducer = (state = initialState, action: AllActionType) => {
+export const SiteBarReducer = (state = initialState, action: any) => {
     return state
 }
