@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Friends.module.css'
-import {LastFriend} from "./friend/Friend";
+import {Friend} from "./friend/Friend";
 
 export type FriendsItemsPropsType = {
     id: string
@@ -17,7 +17,7 @@ export const FriendsItems: React.FC<FriendsItemsPropsType> = (props) => {
                 <div className={s.titleFriend}>
                     <span>{props.title}</span>
                 </div>
-                <LastFriend lastNameFriend={props.lastNameFriend}/>
+                <Friend lastNameFriend={props.lastNameFriend}/>
             </div>
         </>
     )
