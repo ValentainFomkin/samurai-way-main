@@ -10,9 +10,7 @@ export const SettingsItems: React.FC<SettingsItemsPropsType> = (props) => {
 
 
     return (
-        <div>
-            <span>{props.title}</span>
-        </div>
+        <span>{props.title}</span>
     )
 }
 
