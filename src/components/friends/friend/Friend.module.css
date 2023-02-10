@@ -1,20 +1,20 @@
 
 .lastTalkFriend {
     display: flex;
-    flex-direction: column;
+
 }
 
 .avatarFriend {
-    margin-bottom: -10px;
+ 
 }
 
 .avatarFriend img {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
 }
 
-.nameFriend span {
+.nameFriend a {
     font-size: 18px;
     padding: 0 0 0 8px;
     color: #fa89ff;
