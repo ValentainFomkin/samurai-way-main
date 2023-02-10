@@ -20,16 +20,20 @@ export type UserPropsType = {
 
 export const User = (props: UserPropsType) => {
 
-    if (props.users.length <= 3) {
-        instance.get('/users')
-            .then(res => {
-                console.log(res.data)
-                props.setUsers(res.data.items)
-            })
+    const getUsers = () => {
+        if (props.users.length <= 3) {
+            instance.get('/users')
+                .then(res => {
+                    console.log(res.data)
+                    props.setUsers(res.data.items)
+                })
+        }
     }
+
 
     return (
         <div className={s.userContainer}>
+            <button onClick={getUsers}>Get users</button>
             {
                 props.users.map(u => {
                         const followOnClickHandler = () => {
