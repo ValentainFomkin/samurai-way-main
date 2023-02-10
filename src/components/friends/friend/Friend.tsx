@@ -5,7 +5,7 @@ export type LastFriendItemsPropsType = {
     lastNameFriend: string
 }
 
-export const LastFriend: React.FC<LastFriendItemsPropsType> = (props) => {
+export const Friend: React.FC<LastFriendItemsPropsType> = (props) => {
     const srcAvatar = "https://img.freepik.com/premium-vector/female-user-profile-avatar-is-woman-character-screen-saver-with-emotions_505620-617.jpg?w=2000"
 
 
