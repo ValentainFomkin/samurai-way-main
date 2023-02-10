@@ -5,15 +5,12 @@ import {MusicItems} from "../music/Music";
 import {v1} from "uuid";
 import {NewsItems} from "../news/News";
 import {SettingsItems} from "../settings/Settings";
-import {FriendsItems} from "../friends/Friends";
-import {useDispatch, useSelector} from "react-redux";
-import {ReducersRootType} from "../../redux/redux-store";
-import {NavigationDataType} from "../../redux/siteBar-reducer";
+import {LastFriendsContainer} from "../friends/LastFriendsContainer";
 
 
 export const Navbar = () => {
-    const siteBarData = useSelector<ReducersRootType, NavigationDataType>(state => state.siteBarReducer)
-    let dispatch = useDispatch()
+    // const siteBarData = useSelector<ReducersRootType, NavigationDataType>(state => state.siteBarReducer)
+    // let dispatch = useDispatch()
 
     return (
         <div>
@@ -36,7 +33,10 @@ export const Navbar = () => {
                 <Link to={'/users'}>Users</Link>
             </div>
             <div className={s.item}>
-                <Link to={'/friends'}><FriendsItems id={v1()} title={'Friends'} lastNameFriend={'321321'}/></Link>
+                <Link to={'/friends'}>Friends</Link>
+            </div>
+            <div className={s.item}>
+                <LastFriendsContainer/>
             </div>
         </div>
 
