@@ -7,6 +7,7 @@ import {Footer} from "./components/footer/Footer";
 import {Profile} from "./components/profile/Profile";
 import {Route, Routes} from "react-router-dom";
 import {DialogsContainer} from "./components/dialogs/DialogsContainer";
+import {UsersContainer} from "./components/users/UsersContainer";
 
 export type AppPropsType = {
     // state: StateType
@@ -31,6 +32,7 @@ export const App: React.FC<AppPropsType> = (props) => {
                 <Routes>
                     <Route path={'/profile'} element={<Profile/>}/>
                     <Route path={'/dialogs'} element={<DialogsContainer/>}/>
+                    <Route path={'/users'} element={<UsersContainer/>}/>
 
                 </Routes>
 
