@@ -10,9 +10,7 @@ export const NewsItems: React.FC<NewsItemsPropsType> = (props) => {
 
 
     return (
-        <div>
-            <span>{props.title}</span>
-        </div>
+        <span>{props.title}</span>
     )
 }
 
