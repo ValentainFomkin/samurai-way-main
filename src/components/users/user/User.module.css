@@ -1,0 +1,93 @@
+.userContainer {
+    width: 50%;
+}
+
+.userBlock {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.imageAndButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0 15px 25px 0
+
+}
+
+.image {
+    margin-bottom: 10px;
+}
+
+.image img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #b9ff00;
+
+}
+
+.buttonFollow {
+
+}
+
+.buttonFollow button {
+    background-color: #b9ff00;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #fa89ff;
+
+}
+
+.infoProfile {
+    display: flex;
+    width: 100%;
+    height: 85px;
+    justify-content: space-between;
+
+    border-radius: 20px;
+    padding: 5px 10px;
+
+    border: 2px solid #fa89ff;
+
+}
+
+.nameAndText {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+.text {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+.countryAndCity {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.city {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.country {
+    font-size: 20px;
+    font-weight: 400;
+}
+
