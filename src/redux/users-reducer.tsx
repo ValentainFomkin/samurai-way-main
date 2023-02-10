@@ -38,6 +38,17 @@ let initialState: UsersDataType = {
             },
             uniqueUrlName: '',
         },
+        {
+            id: 444,
+            followed: false,
+            name: 'LEna',
+            status: 'im a boss',
+            photos: {
+                large: 'https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg',
+                small: ''
+            },
+            uniqueUrlName: '',
+        },
     ]
 }
 
