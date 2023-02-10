@@ -3,6 +3,8 @@
     background-color: #e6fffb;
     max-width: 1500px;
     margin: 0 auto;
+    max-height: 100%;
+    overflow: hidden;
 }
 
 .header {
