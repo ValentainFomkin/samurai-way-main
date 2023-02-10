@@ -33,6 +33,9 @@ export const Navbar = () => {
                 <Link to={'/settings'}><SettingsItems id={v1()} title={'Settings'}/></Link>
             </div>
             <div className={s.item}>
+                <Link to={'/users'}>Users</Link>
+            </div>
+            <div className={s.item}>
                 <Link to={'/friends'}><FriendsItems id={v1()} title={'Friends'} lastNameFriend={'321321'}/></Link>
             </div>
         </div>
