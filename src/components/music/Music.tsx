@@ -10,9 +10,7 @@ export const MusicItems: React.FC<MusicItemsPropsType> = (props) => {
 
 
     return (
-        <div>
-            <span>{props.title}</span>
-        </div>
+        <span>{props.title}</span>
     )
 }
 
