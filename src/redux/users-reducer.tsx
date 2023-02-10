@@ -1,34 +1,42 @@
-import {v1} from "uuid";
-
 const FOLLOW = 'FOLLOW'
 const UN_FOLLOW = 'UN_FOLLOW'
 const SET_USERS = 'SET_USERS'
 
+
 let initialState: UsersDataType = {
     users: [
         {
-            id: v1(),
-            photoUrl: 'https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg',
+            id: 111,
             followed: false,
-            fullName: 'Dima',
+            name: 'Dima',
             status: 'im a boss',
-            location: {city: 'Volgograd', country: 'Russia'}
+            photos: {
+                large: 'https://static.vecteezy.com/system/resources/thumbnails/002/002/332/small/ablack-man-avatar-character-isolated-icon-free-vector.jpg',
+                small: ''
+            },
+            uniqueUrlName: '',
         },
         {
-            id: v1(),
-            photoUrl: 'https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png',
+            id: 222,
             followed: true,
-            fullName: 'Valya',
+            name: 'Valya',
             status: 'im a boss',
-            location: {city: 'Ukraine', country: 'Kiev'}
+            photos: {
+                large: 'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg',
+                small: ''
+            },
+            uniqueUrlName: '',
         },
         {
-            id: v1(),
-            photoUrl: 'https://img.freepik.com/premium-vector/female-user-profile-avatar-is-woman-character-screen-saver-with-emotions_505620-617.jpg?w=2000',
+            id: 333,
             followed: false,
-            fullName: 'Alina',
+            name: 'Alina',
             status: 'im a boss',
-            location: {city: 'Minsk', country: 'Belarus'}
+            photos: {
+                large: 'https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg',
+                small: ''
+            },
+            uniqueUrlName: '',
         },
     ]
 }
@@ -37,23 +45,27 @@ export type UsersDataType = {
     users: UsersType[]
 }
 export type UsersType = {
-    id: string
-    photoUrl: string
+    id: number
     followed: boolean
-    fullName: string
+    name: string
     status: string
-    location: { city: string, country: string }
+    uniqueUrlName: string
+    photos: {
+        large: string
+        small: string
+    }
 }
 
 export type AllTypesUsersReducer = FollowActionType
     | UnFollowActionType
     | SetUsersActionType
 
+
 export type FollowActionType = ReturnType<typeof followAC>
 export type UnFollowActionType = ReturnType<typeof unFollowAC>
 export type SetUsersActionType = ReturnType<typeof setUsersAC>
 
-export const UsersReducer = (state = initialState, action: AllTypesUsersReducer): UsersDataType => {
+export const UsersReducer = (state = initialState, action: AllTypesUsersReducer) => {
     switch (action.type) {
         case "FOLLOW": {
             return {
@@ -82,6 +94,6 @@ export const UsersReducer = (state = initialState, action: AllTypesUsersReducer)
     }
 }
 
-export const followAC = (userId: string) => ({type: FOLLOW, userId} as const)
-export const unFollowAC = (userId: string) => ({type: UN_FOLLOW, userId} as const)
+export const followAC = (userId: number) => ({type: FOLLOW, userId} as const)
+export const unFollowAC = (userId: number) => ({type: UN_FOLLOW, userId} as const)
 export const setUsersAC = (users: UsersType[]) => ({type: SET_USERS, users} as const)
