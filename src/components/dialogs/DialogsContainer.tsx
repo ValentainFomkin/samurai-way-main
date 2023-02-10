@@ -30,7 +30,6 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     return {
         onChangeTextArea: (text: string) => {
             dispatch(updateNewMessagesTextAC(text))
-
         },
         addNewMessage: () => {
             dispatch(addNewMessageAC())
