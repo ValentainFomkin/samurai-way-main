@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo, useEffect} from 'react';
 import {UsersType} from "../../../redux/users-reducer";
 import s from './User.module.css'
 import axios from "axios";
@@ -18,22 +18,21 @@ export type UserPropsType = {
     setUsers: (users: UsersType[]) => void
 }
 
-export const User = (props: UserPropsType) => {
+export const User = memo((props: UserPropsType) => {
 
-    const getUsers = () => {
-        if (props.users.length <= 3) {
-            instance.get('/users')
-                .then(res => {
-                    console.log(res.data)
+    useEffect(() => {
+        instance.get('/users')
+            .then(res => {
+                if (props.users.length <= 4) {
                     props.setUsers(res.data.items)
-                })
-        }
-    }
+                }
+            })
+    }, [])
 
 
     return (
         <div className={s.userContainer}>
-            <button onClick={getUsers}>Get users</button>
+
             {
                 props.users.map(u => {
                         const followOnClickHandler = () => {
@@ -84,5 +83,5 @@ export const User = (props: UserPropsType) => {
         </div>
 
     );
-};
+});
 

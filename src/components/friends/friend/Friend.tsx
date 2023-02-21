@@ -15,17 +15,18 @@ export const Friend: React.FC<LastFriendItemsPropsType> = (props) => {
             {
                 props.users.map(u => {
                     return (
-                        <div className={s.lastTalkFriend}>
-                            <div className={s.avatarFriend}>
-                                <img src={u.photos.large}/>
+                        u.id <= 444 ?
+                            <div key={u.id} className={s.lastTalkFriend}>
+                                <div className={s.avatarFriend}>
+                                    <img src={u.photos.large}/>
+                                </div>
+                                <div className={s.nameFriend}>
+                                    <Link to={`/friends/${u.id}`}>
+                                        {u.name}
+                                    </Link>
+                                </div>
                             </div>
-                            <div className={s.nameFriend}>
-                                <Link to={`/friends/${u.id}`}>
-                                    {u.name}
-                                </Link>
-                            </div>
-                        </div>
-
+                            : ''
                     )
                 })}
         </>
