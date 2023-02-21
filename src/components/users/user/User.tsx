@@ -20,13 +20,15 @@ export type UserPropsType = {
 
 
 export class User extends React.Component<UserPropsType> {
-    constructor(props: UserPropsType) {
-        super(props);
+
+
+    componentDidMount() {
         instance.get('/users')
             .then(res => {
                 this.props.setUsers(res.data.items)
             })
     }
+
 
     render() {
         return (
