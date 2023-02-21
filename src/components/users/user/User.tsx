@@ -20,21 +20,18 @@ export type UserPropsType = {
 
 
 export class User extends React.Component<UserPropsType> {
-
-    getUsers = () => {
-        if (this.props.users.length <= 4) {
-            instance.get('/users')
-                .then(res => {
-                    this.props.setUsers(res.data.items)
-                })
-        }
+    constructor(props: UserPropsType) {
+        super(props);
+        instance.get('/users')
+            .then(res => {
+                this.props.setUsers(res.data.items)
+            })
     }
 
     render() {
         return (
             <div className={s.userContainer}>
 
-                <button onClick={this.getUsers}>Get Users</button>
 
                 {
                     this.props.users.map(u => {
