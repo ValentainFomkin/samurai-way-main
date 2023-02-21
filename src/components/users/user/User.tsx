@@ -2,6 +2,7 @@ import React, {memo, useEffect} from 'react';
 import {UsersType} from "../../../redux/users-reducer";
 import s from './User.module.css'
 import axios from "axios";
+import userPhoto from '../../../assets/images/3135715.png'
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -19,6 +20,8 @@ export type UserPropsType = {
 }
 
 export const User = memo((props: UserPropsType) => {
+
+    const srcAvatarLast = userPhoto
 
     useEffect(() => {
         instance.get('/users')
@@ -46,7 +49,7 @@ export const User = memo((props: UserPropsType) => {
                             <div key={u.id} className={s.userBlock}>
                                 <div className={s.imageAndButton}>
                                     <div className={s.image}>
-                                        <img src={u.photos.large}/>
+                                        <img src={u.photos.large != null ? u.photos.large : srcAvatarLast}/>
                                     </div>
                                     <div className={s.buttonFollow}>
                                         <button onClick={followOnClickHandler}>
