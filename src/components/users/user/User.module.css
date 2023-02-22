@@ -2,6 +2,10 @@
     width: 50%;
 }
 
+.selectedPage {
+    font-weight: 700;
+}
+
 .userBlock {
     display: flex;
     justify-content: space-between;
