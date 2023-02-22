@@ -1,59 +1,22 @@
 const FOLLOW = 'FOLLOW'
 const UN_FOLLOW = 'UN_FOLLOW'
 const SET_USERS = 'SET_USERS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 
 
 let initialState: UsersDataType = {
-    users: [
-        {
-            id: 111,
-            followed: false,
-            name: 'Dima',
-            status: 'im a boss',
-            photos: {
-                large: 'https://static.vecteezy.com/system/resources/thumbnails/002/002/332/small/ablack-man-avatar-character-isolated-icon-free-vector.jpg',
-                small: ''
-            },
-            uniqueUrlName: '',
-        },
-        {
-            id: 222,
-            followed: true,
-            name: 'Valya',
-            status: 'im a boss',
-            photos: {
-                large: 'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg',
-                small: ''
-            },
-            uniqueUrlName: '',
-        },
-        {
-            id: 333,
-            followed: false,
-            name: 'Alina',
-            status: 'im a boss',
-            photos: {
-                large: 'https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg',
-                small: ''
-            },
-            uniqueUrlName: '',
-        },
-        {
-            id: 444,
-            followed: false,
-            name: 'LEna',
-            status: 'im a boss',
-            photos: {
-                large: 'https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg',
-                small: ''
-            },
-            uniqueUrlName: '',
-        },
-    ]
+    users: [],
+    pageSize: 5,
+    totalUserCount: 0,
+    currentPage: 1,
 }
 
 export type UsersDataType = {
     users: UsersType[]
+    pageSize: number
+    totalUserCount: number
+    currentPage: number
 }
 export type UsersType = {
     id: number
@@ -70,11 +33,15 @@ export type UsersType = {
 export type AllTypesUsersReducer = FollowActionType
     | UnFollowActionType
     | SetUsersActionType
+    | SetCurrentPageAC
+    | SetTotalUsersCount
 
 
 export type FollowActionType = ReturnType<typeof followAC>
 export type UnFollowActionType = ReturnType<typeof unFollowAC>
 export type SetUsersActionType = ReturnType<typeof setUsersAC>
+export type SetCurrentPageAC = ReturnType<typeof setCurrentPageAC>
+export type SetTotalUsersCount = ReturnType<typeof setTotalUsersCountAC>
 
 export const UsersReducer = (state = initialState, action: AllTypesUsersReducer) => {
     switch (action.type) {
@@ -96,10 +63,19 @@ export const UsersReducer = (state = initialState, action: AllTypesUsersReducer)
         }
         case "SET_USERS": {
             return {
-                ...state, users: [...state.users, ...action.users]
+                ...state, users: action.users
             }
         }
-
+        case "SET_CURRENT_PAGE":
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        case "SET_TOTAL_USERS_COUNT":
+            return {
+                ...state,
+                totalUserCount: action.currentTotalCount
+            }
         default:
             return state
     }
@@ -108,3 +84,8 @@ export const UsersReducer = (state = initialState, action: AllTypesUsersReducer)
 export const followAC = (userId: number) => ({type: FOLLOW, userId} as const)
 export const unFollowAC = (userId: number) => ({type: UN_FOLLOW, userId} as const)
 export const setUsersAC = (users: UsersType[]) => ({type: SET_USERS, users} as const)
+export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage} as const)
+export const setTotalUsersCountAC = (currentTotalCount: number) => ({
+    type: SET_TOTAL_USERS_COUNT,
+    currentTotalCount
+} as const)
