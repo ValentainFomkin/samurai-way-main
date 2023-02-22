@@ -1,5 +1,9 @@
 .usersBlock {
     width: 100%;
-    
+
     padding: 0 40px;
+}
+
+.preloader {
+    border: 2px solid #f600ff;
 }
