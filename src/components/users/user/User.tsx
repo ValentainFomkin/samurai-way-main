@@ -12,10 +12,16 @@ const instance = axios.create({
     }
 })
 export type UserPropsType = {
+    currentPage: number
+    pageSize: number
+    totalUserCount: number
     users: UsersType[]
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     setUsers: (users: UsersType[]) => void
+    setCurrentPage: (currentPage: number) => void
+    setTotalUsersCountAC: (currentTotalCount: number) => void
+
 }
 
 
@@ -23,18 +29,42 @@ export class User extends React.Component<UserPropsType> {
 
 
     componentDidMount() {
-        instance.get('/users')
+        instance.get(`/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(res => {
+                this.props.setUsers(res.data.items)
+                this.props.setTotalUsersCountAC(res.data.totalCount * 0.002)
+            })
+    }
+
+    setCurrentPage = (currentPage: number) => {
+        this.props.setCurrentPage(currentPage)
+        instance.get(`/users?page=${currentPage}&count=${this.props.pageSize}`)
             .then(res => {
                 this.props.setUsers(res.data.items)
             })
     }
 
-
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
+
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
+
         return (
             <div className={s.userContainer}>
+                {pages.map(p => {
 
 
+                    return (
+                        <button key={p}
+                                onClick={() => this.setCurrentPage(p)}
+                                className={this.props.currentPage === p ? s.selectedPage : ''}>{p}</button>
+                    )
+                })}
                 {
                     this.props.users.map(u => {
                             const followOnClickHandler = () => {
@@ -61,6 +91,7 @@ export class User extends React.Component<UserPropsType> {
                                         <div className={s.nameAndText}>
                                             <div className={s.name}>
                                                 <span>{u.name}</span>
+
                                             </div>
                                             <div className={s.text}>
                                                 {u.status}
